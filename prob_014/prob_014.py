@@ -4,12 +4,9 @@
 def calc_chain_len(num):
     chain_len = 1
     while True:
-        if num % 2 == 0:
-            num /= 2
-        else:
-            num = num * 3 + 1
+        num = num // 2 if num % 2 == 0 else num * 3 + 1
 
-        if num in chains_dict:
+        if num < 1000001 and chains_dict[num] != 0:
             chain_len += chains_dict[num]
             break
 
@@ -25,7 +22,7 @@ if __name__ == '__main__':
     biggest_chain_num = 0
     biggest_chain_len = 0
 
-    chains_dict = {}
+    chains_dict = [0]*1000001
 
     for starting_num in range(1, 1000000):
 
